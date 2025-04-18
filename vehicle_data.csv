@@ -1,0 +1,4 @@
+timestamp,vehicle_id,speed_kmh,engine_temp_c,rp,error_code,fuel_level_percent
+2025-04-18 22:47:01.643244,BMW-123,199,22,3261,"P0500, P0171",61
+2025-04-18 22:47:01.643342,AUDI-456,77,77,5917,P0500,43
+2025-04-18 22:47:01.643359,TESLA-789,36,114,7908,P0171,83
