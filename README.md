@@ -1,6 +1,6 @@
-# Vehicle Diagnostics Pipeline 🚗📊
+# Vehicle Diagnostics Pipeline 
 
-Ein Data-Engineering-Projekt zur Generierung, Verarbeitung und Analyse von Fahrzeug-Diagnosedaten (OBD-II) mit Python.
+Ein Data-Engineering-Projekt zur Generierung, Verarbeitung und Analyse von Fahrzeug-Diagnosedaten (OBD2) mit Python.
 
 ## 🔍 Projektziel
 
