@@ -10,5 +10,5 @@ Dieses Projekt simuliert Diagnosedaten von Fahrzeugen und verarbeitet sie in ein
 - **in einer Datenbank zu speichern**
 - **über eine API zugänglich zu machen**
 
-Dabei kommen moderne Tools und Konzepte wie **FastAPI**, **pandas**, **Docker** und **automatisierte Tests** zum Einsatz.
+Dabei kommen moderne Tools und Konzepte wie **FastAPI**, **Pandas**, **Docker** und **automatisierte Tests** zum Einsatz.
 
