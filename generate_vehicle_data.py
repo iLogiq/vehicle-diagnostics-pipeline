@@ -1,37 +1,42 @@
 import csv
 from datetime import datetime
 import random
-import time
 
 def generate_vehicle_data():
-    while True:
-        time.sleep(3)
-        vehicle = ['BMW-123', 'AUDI-456', 'TESLA-789']
-        error_codes = ["P0300", "P0171", "P0420", "P0500", "P0128", "P0455", "U0100"]
+    vehicles = ['BMW-123', 'AUDI-456', 'TESLA-789']
+    error_codes = ["P0300", "P0171", "P0420", "P0500", "P0128", "P0455"]
+    data = []
 
-        toWrite = [
-            ["timestamp", "vehicle_id", "speed_kmh", "engine_temp_c", "rp", "error_code", "fuel_level_percent"]
-        ]
+    for vehicle in vehicles:
+        entry = {
+            "timestamp": str(datetime.now()),
+            "vehicle_id": vehicle,
+            "speed_kmh": random.randint(1, 240),
+            "engine_temp_c": random.randint(20, 120),
+            "rpm": random.randint(700, 6500) if vehicle != 'TESLA-789' else random.randint(0, 15000),
+            "error_code": ', '.join(random.sample(error_codes, k=random.randint(0, 2))),
+            "fuel_level_percent": random.randint(5, 95)
+        }
+        data.append(entry)
 
-        for v in vehicle:
-            timestamp = str(datetime.now())
-            speed = random.randint(1, 240)
-            engine_temp = random.randint(20, 120)
-            rpm = random.randint(700, 6500) if v != 'TESLA-789' else random.randint(0, 15000)  
-            error_code = ', '.join(random.sample(error_codes, k=random.randint(0, 2)))  
-            fuel_level = random.randint(5, 100)
-            toWrite.append([timestamp, v, speed, engine_temp, rpm, error_code, fuel_level])
-
-        for entry in toWrite:
-            print(entry)
-
-        return toWrite
+    return data
 
 
-file = open('vehicle_data.csv', 'w') 
+def write_to_csv(data, filename='vehicle_data.csv'):
+    with open(filename, mode='w', newline='') as file:
+        
+        fieldnames = ["timestamp", "vehicle_id", "speed_kmh", "engine_temp_c", "rpm", "error_code", "fuel_level_percent"]
+        
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        
+        writer.writeheader()
+        
+        for entry in data:
+            writer.writerow(entry)
 
-with file:
-    writer = csv.writer(file)
 
-    for row in generate_vehicle_data():
-        writer.writerow(row)
+vehicle_data = generate_vehicle_data()
+
+
+write_to_csv(vehicle_data)
+      
